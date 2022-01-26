@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Encounter Counter</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="counter-card-wrapper">
+            <div class="counter-card-content">
+
+                <form class="form">
+                    <input type="text" class="search-bar"><button class="search-button" type="button">Search</button>
+                </form>
+
+                <div class="pokemon-name">Search Your Pokemon</div>
+                <img src="./assets/defaultsprite.gif" alt="pokemon-sprite" class="sprite">
+
+                <div class="encounters"></div>
+
+                <div class="buttons">
+                    <button class="minus">-</button>
+                    <button class="reset">Reset</button>
+                    <button class="plus">+</button>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/fetch.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>

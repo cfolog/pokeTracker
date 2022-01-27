@@ -27,6 +27,33 @@ if (localStorage.getItem('counter') != null){
 
 // event listeners
 
+//keyboard clicks
+
+window.addEventListener('keydown', (e) =>{
+    switch(e.key){
+        case 'ArrowRight':
+            counter = counter + 1;
+            counterText.textContent = `Encounters: ${counter}`;
+            localStorage.setItem('counter', `${counter}`);
+            break;
+
+        case 'ArrowLeft':
+            if(counter > 0){
+                counter = counter - 1;
+                counterText.textContent = `Encounters: ${counter}`;
+                localStorage.setItem('counter', `${counter}`);
+            }
+            break;
+        
+        case "Enter":
+            doTheThing();
+            break;
+
+    }
+});
+
+
+
 // handles clicks
 card.addEventListener('click', (e) =>{
     

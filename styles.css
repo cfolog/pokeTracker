@@ -1,9 +1,15 @@
 
+@font-face {
+    font-family: custom-font;
+    src: url('./assets/NotoSerif-Regular.ttf');
+}
+
 body{
     margin: 0;
     color: white;
     overflow: hidden;
     touch-action: manipulation;
+    font-family:  custom-font, Serif;
 }
 
 .container{
@@ -11,11 +17,32 @@ body{
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     background-image: url('./assets/bkrnd.gif');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+}
+
+.info-bar{
+    position: absolute;
+    top: 1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.info-bar button{
+    padding: 8px;
+    margin: 0px 15px 0px 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.greyed-out{
+    background-color: rgba(255, 0, 0, 0.7);
 }
 
 .counter-card-wrapper{
@@ -30,6 +57,11 @@ body{
 }
 
 .counter-card-content{
+    height: 100%;
+    width: 100%;
+}
+
+.counter-card-counter{
     position: relative;
     height: 100%;
     width: 100%;
@@ -70,13 +102,10 @@ form input{
     width: 10em;
 }
 
-button:hover{
-    background-color: rgba(255,255,255, 25%);
-    transform: scale(1.1);
-}
-
 .pokemon-name{
-    font-size: 2em;
+    text-align: center;
+    width: 100%;
+    font-size: 1.6em;
 }
 
 .sprite{
@@ -86,13 +115,82 @@ button:hover{
     display: flex;
     align-items: center;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.32);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+
+
+/* info modal */
+
+.counter-card-info{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    cursor: default;
+    overflow-y: scroll;
+}
+
+.info-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.info-wrapper h2{
+    margin: 15px 0px 0px 15px;
+}
+
+.info-wrapper button{
+    margin: 10px 0px 0px 10px;
+}
+
+.info-wrapper p, .info-wrapper li{
+    padding: 5px 15px 5px 15px;
+    font-size: 14px;
+}
+
+.info-wrapper a{
+    color: rgb(129, 158, 245);
+}
+
+.info-wrapper p {
+    text-indent: 8px;
+}
+
+.info-wrapper li{
+    text-indent: 2px;
+}
+
+ul > .tip{
+    list-style: none;
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+
+/* hover affects only on devices above 900px */
+@media only screen and (min-width: 900px) {
+
+button:hover{
+    background-color: rgba(255,255,255, 25%);
+    transform: scale(1.1);
+}
+
 }
 
 
 
 @media only screen and (max-width: 500px) {
 
-    .container{
+.container{
     background-image: url('./assets/mobile-bkrnd.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -108,7 +206,7 @@ button:hover{
 }
 
 button, input{
-    padding: 5px 15px 5px 15px;
+    padding: 8px 18px 8px 18px;
     margin: 0px 10px 0px 10px;
     font-size: .8em;
 }
@@ -120,6 +218,7 @@ form button, form input{
 form button{
     margin: 0;
 }
+
 
 form input{
     width: 7.5em;

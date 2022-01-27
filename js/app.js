@@ -4,12 +4,10 @@ const request = new Fetch;
 localStorage.getItem('counter');
 localStorage.getItem('sprite');
 localStorage.getItem('title');
+localStorage.getItem('remember');
 
 const counterText = document.querySelector('.encounters');
-const resetButton = document.querySelector('.reset');
-const munusButton = document.querySelector('.minus');
-const plusButton = document.querySelector('.plus');
-const card = document.querySelector('.counter-card-wrapper');
+const container = document.querySelector('.container');
 
 const sprite = document.querySelector('.sprite');
 const spriteName = document.querySelector('.pokemon-name');
@@ -20,15 +18,13 @@ counterText.textContent = `Encounters: ${counter}`;
 
 
 // If local storage has anything saved, it loads all previous data
-if (localStorage.getItem('counter') != null){
+if (localStorage.getItem('remember') === 'true'){
     rememberMe();
 }
-
 
 // event listeners
 
 //keyboard clicks
-
 window.addEventListener('keydown', (e) =>{
     switch(e.key){
         case 'ArrowRight':
@@ -50,12 +46,18 @@ window.addEventListener('keydown', (e) =>{
 
 
 // handles clicks
-card.addEventListener('click', (e) =>{
+container.addEventListener('click', (e) =>{
     
     switch(e.target.className){
-        case 'counter-card-content':
-            // counter = counter + 1;
-            // counterText.textContent = `Encounters: ${counter}`;
+        case 'counter-card-counter':
+            counter = counter + 1;
+            counterText.textContent = `Encounters: ${counter}`;
+            localStorage.setItem('counter', `${counter}`);
+            break;
+        case 'sprite':
+            counter = counter + 1;
+            counterText.textContent = `Encounters: ${counter}`;
+            localStorage.setItem('counter', `${counter}`);
             break;
         case 'plus':
             counter = counter + 1;
@@ -76,6 +78,14 @@ card.addEventListener('click', (e) =>{
             break;
         case 'search-button':
             doTheThing();
+            // localStorage.setItem('remember', true);
+            break;
+        case 'clear-cache-button':
+            clearCache();
+            // localStorage.setItem('remember', false);
+            break;
+        case 'about-button':
+            infoModal();
             break;
     }
 });
@@ -94,7 +104,7 @@ async function searchPokemon(){
         const normalSprite = await data.sprites.front_default;
         const shinySprite = await data.sprites.front_shiny;
 
-        cardData = [pokemonName, normalSprite, shinySprite]
+        cardData = [pokemonName, normalSprite, shinySprite];
         return cardData;
     }
 
@@ -110,6 +120,7 @@ function displayData(currentHunt){
     localStorage.setItem('name', `${pokeName}`);
     sprite.src = shinySprite;
     localStorage.setItem('sprite', `${shinySprite}`);
+    localStorage.setItem('remember', true);
 };
 
 // combines search and display functions, to be called when search bar searches
@@ -134,4 +145,49 @@ function rememberMe(){
     sprite.src = localStorage.getItem('sprite');
     counter = Number(localStorage.getItem('counter'));
     counterText.textContent = `Encounters: ${localStorage.getItem('counter')}`;
-}
+};
+
+
+// clear cache
+
+function areYouSure(){
+    const ask = confirm('Are you sure? This will reset the whole page.');
+
+    return ask;
+};
+
+async function clearCache(){
+    const youSureBra = await areYouSure();
+    if (youSureBra){
+        localStorage.clear();
+        spriteName.textContent = 'Search Your Pokemon';
+        sprite.src = './assets/defaultsprite.gif';
+        counter = 0;
+        counterText.textContent = `Encounters: ${counter}`;
+        localStorage.setItem('remember', false);
+    }
+
+};
+
+// open/close about modal
+
+function infoModal(){
+    const counterCard = document.querySelector('.counter-card-counter');
+    const infoCard = document.querySelector('.counter-card-info');
+    const backButton = document.querySelector('.back-button');
+    const siteHeader = document.querySelector('.info-bar');
+    const headerButtons = document.querySelector('.info-bar');
+
+    siteHeader.style.pointerEvents = 'none';
+    counterCard.style.display = 'none';
+    infoCard.style.display = 'flex';
+    headerButtons.style.opacity = '.6';
+
+    backButton.addEventListener('click', () =>{
+        counterCard.style.display = 'flex';
+        infoCard.style.display = 'none';
+        siteHeader.style.pointerEvents = 'auto';
+        headerButtons.style.opacity = '1';
+    });
+
+};

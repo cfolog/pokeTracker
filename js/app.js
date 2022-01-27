@@ -44,11 +44,6 @@ window.addEventListener('keydown', (e) =>{
                 localStorage.setItem('counter', `${counter}`);
             }
             break;
-        
-        case "Enter":
-            doTheThing();
-            break;
-
     }
 });
 

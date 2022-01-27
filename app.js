@@ -27,25 +27,6 @@ if (localStorage.getItem('counter') != null){
 
 // event listeners
 
-// allows desktop to use arrow keys to change encounter value
-document.addEventListener('keydown', function(event) {
-    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
-    switch(key){
-        case 'ArrowRight':
-            counter = counter + 1;
-            counterText.textContent = `Encounters: ${counter}`;
-            localStorage.setItem('counter', `${counter}`);
-            break;
-        case 'ArrowLeft':
-            if(counter > 0){
-                counter = counter - 1;
-                counterText.textContent = `Encounters: ${counter}`;
-                localStorage.setItem('counter', `${counter}`);
-            }
-            break;
-    }
-});
-
 // handles clicks
 card.addEventListener('click', (e) =>{
     

@@ -134,13 +134,14 @@ async function doTheThing(){
 
     // Requests pokemon data from API & stores needed values in global variable
     currentHunt = await searchPokemon();
-    
     // waits until global variable contains the data, then displays it
     if (currentHunt){
         displayData(await currentHunt); 
         document.querySelector('.search-bar').value = '';
         counter = 0;
         counterText.textContent = `Encounters: ${counter}`;
+        localStorage.setItem('counter', 0);
+        console.log();
     }
     
 };

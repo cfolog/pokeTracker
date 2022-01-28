@@ -16,7 +16,6 @@ let counter = 0;
 let currentHunt = [];
 counterText.textContent = `Encounters: ${counter}`;
 
-
 // If local storage has anything saved, it loads all previous data
 if (localStorage.getItem('remember') === 'true'){
     rememberMe();
@@ -40,10 +39,11 @@ window.addEventListener('keydown', (e) =>{
                 localStorage.setItem('counter', `${counter}`);
             }
             break;
+        case 'Enter':
+            e.preventDefault();
+            document.getElementById('submit').click();
     }
 });
-
-
 
 // handles clicks
 container.addEventListener('click', (e) =>{
@@ -54,16 +54,19 @@ container.addEventListener('click', (e) =>{
             counterText.textContent = `Encounters: ${counter}`;
             localStorage.setItem('counter', `${counter}`);
             break;
+
         case 'sprite':
             counter = counter + 1;
             counterText.textContent = `Encounters: ${counter}`;
             localStorage.setItem('counter', `${counter}`);
             break;
+
         case 'plus':
             counter = counter + 1;
             counterText.textContent = `Encounters: ${counter}`;
             localStorage.setItem('counter', `${counter}`);
             break;
+
         case 'minus':
             if(counter > 0){
                 counter = counter - 1;
@@ -71,22 +74,25 @@ container.addEventListener('click', (e) =>{
                 localStorage.setItem('counter', `${counter}`);
             }
             break;
+
         case 'reset':
             counter = 0;
             counterText.textContent = `Encounters: ${counter}`;
             localStorage.setItem('counter', `${counter}`);
             break;
+
         case 'search-button':
             doTheThing();
-            // localStorage.setItem('remember', true);
             break;
+
         case 'clear-cache-button':
             clearCache();
-            // localStorage.setItem('remember', false);
             break;
+
         case 'about-button':
             infoModal();
             break;
+            
     }
 });
 

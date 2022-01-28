@@ -20,7 +20,7 @@
 
                 <div class="counter-card-counter">
                     <form class="form">
-                        <input type="text" class="search-bar"><button class="search-button" type="button">Search</button>
+                        <input type="text" class="search-bar" placeholder="e.g. Pikachu"><button class="search-button" type="button">Search</button>
                     </form>
 
                     <div class="pokemon-name">Search Your Pokemon</div>
@@ -41,14 +41,13 @@
                         <h2>Instructions:</h2>
                         <ul>
                             <li>Search for any pokemon in the National Dex</li>
-                            <li>Use the "+"/"-" buttons to log the number of encounters you've had while shiny hunting that pokemon. The "reset" button will reset your encounters count to 0.</li>
-                            <li class="tip">TIP: Click anywhere on the card to add to the counter. Much easier than clicking the "+" button directly.</li>
+                            <li>Use the "+" / "-" buttons to log the number of encounters you've had while shiny hunting that pokemon. (clicking anywhere on the card will also act as the "+" button for ease of use). The "reset" button will reset your encounters count to 0.</li>
                             <li class="tip">TIP: If you're on a desktop, you may also use the left and right arrow keys on your keyboard to add or subtract to the counter</li>
-                            <li class="tip">TIP: Simply searching for a new pokemon will reset the counter card, however pressing the "Clear Cache" button will reset the whole site to its default peramaters.</li>
+                            <li class="tip">TIP: Simply searching for a new pokemon will reset the counter card, however pressing the "Clear Cache" button will reset the whole site to its default parameters.</li>
                             <li class="tip">TIP: This site works using local storage! Clearing your cache or visiting in incognito will result in loss of your previous session.</li>
                         </ul>
                         <h2>How it works:</h2>
-                        <p>This webste uses the <a target="__blank" href="https://pokeapi.api-docs.io/v2.0/intro/nJa4jkWuFLPX3PWiD">PokeAPI</a> in order to request and retrieve data on pokemon that you search for. This includes the sprite, as well as the displayed name of the pokemon. Once the requested info gets sent to your browser, it will display it and store necessary data in the local storage of your browser (this being the sprite, sprite name, and number of encounters). This allows for two things; The first being the ability to close the site, and re open to your previous session. The second being that it keeps the requests to the PokeAPI low, as you only request data from it when first searching for a pokemon.</p>
+                        <p>This website uses the <a target="__blank" href="https://pokeapi.api-docs.io/v2.0/intro/nJa4jkWuFLPX3PWiD">PokeAPI</a> in order to request and retrieve data on pokemon that you search for. This includes the sprite, as well as the displayed name of the pokemon. Once the requested info gets sent to your browser, it will display it and store necessary data in the local storage of your browser (this being the sprite, sprite name, and number of encounters). This allows for two things; The first being the ability to close the site, and re open to your previous session. The second being that it keeps the requests to the PokeAPI low, as you only request data from it when first searching for a pokemon.</p>
                     </div>
                     
                 </div>

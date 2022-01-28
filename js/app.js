@@ -102,14 +102,14 @@ container.addEventListener('click', (e) =>{
 // requests and returns the wanted data
 async function searchPokemon(){
 
-    const userInput = document.querySelector('.search-bar').value.toLowerCase();
+    const userInput = document.querySelector('.search-bar').value.split(' ').join('-').toLowerCase(); // formats pokemon with spaces names, so user doesnt have to insert -'s. example: tapu koko instead of tapu-koko
 
     if (userInput != ''){
         data = await request.getData(userInput);
-        const pokemonName = await data.name[0].toUpperCase() + data.name.substring(1);
+        const formattedName = await (data.name[0].toUpperCase() + data.name.substring(1).replace('-', ' ')); // API takes and sends back '-' instead of spaces. this swaps -'s for spaces
+        const pokemonName = formattedName;
         const normalSprite = await data.sprites.front_default;
         const shinySprite = await data.sprites.front_shiny;
-
         cardData = [pokemonName, normalSprite, shinySprite];
         return cardData;
     }

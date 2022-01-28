@@ -1,4 +1,4 @@
-# pokeTracker
+# Pokémon Encounter Counter
 
   I was shiny hunting for Ralts in Pokemon Shining Pearl and wanted a counter to keep track of my encounter chain.
   However, my phone was almost dead and I was at my desk. I needed one on my PC.
